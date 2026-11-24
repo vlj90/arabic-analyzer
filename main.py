@@ -70,19 +70,20 @@ def save_report(report, output_path):  # دالة حفظ التقرير
 
 # استدعاء كل الدوال
 
-try:  # Error Handling اذا الملف مكنش موجود
-    total_words, word_counts = analyze_csv("ar_text_data.csv")
+if __name__ == "__main__":
+    try:  # Error Handling اذا الملف مكنش موجود
+        total_words, word_counts = analyze_csv("ar_text_data.csv")
 
-except FileNotFoundError:
-    print("الملف غير موجود")
-    raise SystemExit(1)
+    except FileNotFoundError:
+        print("الملف غير موجود")
+        raise SystemExit(1)
 
+    top_20_words = get_top_words(word_counts)  # استخراج أكثر 20 كلمة
+    print("Top 20 words:", top_20_words)  # اعرضها
 
-top_20_words = get_top_words(word_counts)  # استخراج أكثر 20 كلمة
-print("Top 20 words:", top_20_words)  # اعرضها
+    report = {
+        "total_words": total_words,
+        "top_20_words": top_20_words,
+    }
 
-report = {
-    "total_words": total_words,
-    "top_20_words": top_20_words,
-}
-save_report(report, "report.json")  # حفظ التقرير في JSON
+    save_report(report, "report.json")  # حفظ التقرير في JSON
