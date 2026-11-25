@@ -137,3 +137,33 @@ The API validates uploaded files before processing them.
 - `report.json` — Generated CLI analysis report.
 - `README.md` — Project documentation.
 - `.gitignore` — Files excluded from version control.
+
+## Automated API Testing
+
+The project includes automated API tests using Pytest
+and FastAPI TestClient.
+
+### Test Cases
+
+- Home endpoint validation.
+- Valid CSV file upload and analysis.
+- Invalid file extension handling.
+- Empty file handling.
+- Missing text column handling.
+- Arabic text cleaning and word count accuracy.
+
+### Running Tests
+
+To run all automated tests:
+
+```bash
+python -m pytest -v
+```
+
+### Test Results
+
+- Total Tests: 6
+- Passed: 6
+- Failed: 0
+- Success Rate: 100%
+- Execution Time: 0.86 seconds
